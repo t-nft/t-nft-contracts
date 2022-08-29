@@ -79,7 +79,7 @@ contract SingleNFT is ERC721Upgradeable {
 		Change & Get Item Information
 	 */
     function addItem(string memory _tokenURI, uint256 royalty) external payable returns (uint256){
-        require(royalty < MAX_NFT_ROYALTY, "invalid royalty");
+        require(royalty <= MAX_NFT_ROYALTY, "invalid royalty");
         uint256 mintFee = INFTFactory(factory).getMintFee();
         require(msg.value >= mintFee, "insufficient fee");	
         if (mintFee > 0) {
