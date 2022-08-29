@@ -76,7 +76,7 @@ contract NFTFactory is OwnableUpgradeable {
 	}
 
 	function createSingleCollection(string memory _name, string memory _uri, uint256 royalties, bool bPublic) external returns(address collection) {
-		require(royalties < MAX_COLLECTION_ROYALTY, "invalid royalties");
+		require(royalties <= MAX_COLLECTION_ROYALTY, "invalid royalties");
 		if(bPublic){
 			require(owner() == msg.sender, "Only owner can create public collection");	
 		}		
