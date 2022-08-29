@@ -122,7 +122,7 @@ contract MultipleNFT is ERC1155Upgradeable {
 		Create Card - Only Minters
 	 */
     function addItem( uint256 supply, string memory _uri, uint256 royalty ) external payable returns (uint256) {
-        require(royalty < MAX_NFT_ROYALTY, "invalid royalty");
+        require(royalty <= MAX_NFT_ROYALTY, "invalid royalty");
         uint256 mintFee = INFTFactory(factory).getMintFee();
         require(msg.value >= mintFee, "insufficient fee");
         if (mintFee > 0) {            
