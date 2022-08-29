@@ -13,16 +13,16 @@ async function main() {
   
 
   /**
-   * Upgrade MultipleFixed
+   * Upgrade SingleFixed
    */
-   const multipleFixedAddress = "0xff00091ee99de32429889253f147799804bfdb11";
+   const SingleFixedAddress = "0x9fd95b0dc0a42d8adf5855fed985a5b290ba2e53";
 
-   const MultipleFixedV2 = await ethers.getContractFactory('MultipleFixed', {
+   const SingleFixedV2 = await ethers.getContractFactory('SingleFixed', {
      signer: (await ethers.getSigners())[0]
    })
 
-   const upgradedFactoryContract = await upgrades.upgradeProxy(multipleFixedAddress, MultipleFixedV2);
-   console.log('MultipleFixed upgraded: ', upgradedFactoryContract.address)
+   const upgradedContract = await upgrades.upgradeProxy(SingleFixedAddress, SingleFixedV2);
+   console.log('SingleFixed upgraded: ', upgradedContract.address)
 
 }
 
