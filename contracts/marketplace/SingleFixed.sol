@@ -107,7 +107,7 @@ contract SingleFixed is OwnableUpgradeable, ERC721HolderUpgradeable {
 		uint256 feeAmount = totalAmount.mul(swapFee).div(PERCENTS_DIVIDER);		
 		uint256 collectionOwnerAmount = totalAmount.mul(collectionRoyalties).div(PERCENTS_DIVIDER);
         uint256 nftCreatorAmount = totalAmount.mul(nftRoyalty).div(PERCENTS_DIVIDER);      		
-        uint256 ownerAmount = totalAmount.sub(feeAmount).sub(collectionOwnerAmount);
+        uint256 ownerAmount = totalAmount.sub(feeAmount).sub(collectionOwnerAmount).sub(nftCreatorAmount);
 
 		if (pairs[_id].tokenAdr == address(0x0)) {
             require(msg.value >= totalAmount, "too small amount");
