@@ -12,7 +12,8 @@ async function main() {
   const signer = (await ethers.getSigners())[0]
   console.log('signer:', await signer.getAddress())
 
-  const feeAddress = process.env.FEE_ADDRESS;
+  const marketFeeAddress = process.env.MARKET_FEE_ADDRESS;
+  const auctionFeeAddress = process.env.AUCTION_FEE_ADDRESS;
   
   /**
    *  Deploy and Verify SingleAuction
@@ -21,7 +22,7 @@ async function main() {
     const SingleAuction = await ethers.getContractFactory('SingleAuction', {
       signer: (await ethers.getSigners())[0]
     });
-    const singleAuctionContract = await upgrades.deployProxy(SingleAuction, [feeAddress], { initializer: 'initialize' });
+    const singleAuctionContract = await upgrades.deployProxy(SingleAuction, [auctionFeeAddress], { initializer: 'initialize' });
     await singleAuctionContract.deployed()
 
     console.log('SingleAuction proxy deployed: ', singleAuctionContract.address)
@@ -49,7 +50,7 @@ async function main() {
     const SingleFixed = await ethers.getContractFactory('SingleFixed', {
       signer: (await ethers.getSigners())[0]
     });
-    const singleFixedContract = await upgrades.deployProxy(SingleFixed, [feeAddress], { initializer: 'initialize' });
+    const singleFixedContract = await upgrades.deployProxy(SingleFixed, [marketFeeAddress], { initializer: 'initialize' });
     await singleFixedContract.deployed()
 
     console.log('SingleFixed proxy deployed: ', singleFixedContract.address)
@@ -77,7 +78,7 @@ async function main() {
     const MultipleFixed = await ethers.getContractFactory('MultipleFixed', {
       signer: (await ethers.getSigners())[0]
     });
-    const multipleFixedContract = await upgrades.deployProxy(MultipleFixed, [feeAddress], { initializer: 'initialize' });
+    const multipleFixedContract = await upgrades.deployProxy(MultipleFixed, [marketFeeAddress], { initializer: 'initialize' });
     await multipleFixedContract.deployed()
 
     console.log('MultipleFixed proxy deployed: ', multipleFixedContract.address)
