@@ -8,11 +8,11 @@
   },
   "scripts": {
     "test": "npm run clean && hardhat test",
-    "build": "npm run clean && hardhat compile --network goerli",
-    "deploy-nftcollection": "hardhat run scripts/deploy-nftcollection.js --network goerli",
-    "deploy-marketplace": "hardhat run scripts/deploy-marketplace.js --network goerli",
-    "upgrade-contracts": "hardhat run scripts/upgrade-contracts.js --network goerli",
-    "verify-contract": "hardhat run scripts/verify-contract.js --network goerli",
+    "build": "npm run clean && hardhat compile --network mainnet",
+    "deploy-nftcollection": "hardhat run scripts/deploy-nftcollection.js --network mainnet",
+    "deploy-marketplace": "hardhat run scripts/deploy-marketplace.js --network mainnet",
+    "upgrade-contracts": "hardhat run scripts/upgrade-contracts.js --network mainnet",
+    "verify-contract": "hardhat run scripts/verify-contract.js --network mainnet",
     "lint": "prettier-standard --format",
     "clean": "rimraf cache artifacts"
   },
